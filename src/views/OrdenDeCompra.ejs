@@ -1,0 +1,32 @@
+<%- include('./partials/head') %> 
+<h1>Tu Carrito</h1>
+<%if (Ordenes.length>0){ %>
+<div class="container sm-6">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Referencia de Orden</th>
+            <th scope="col">CantidadItems</th>
+            <th scope="col">NumeroDeOrden</th>
+            <th scope="col">Fecha de Facturación</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <% Ordenes.forEach(orden =>{ %>
+            <tbody>
+                <tr>
+                  <th scope="row"><%=orden._id%></th>
+                  <td><%=orden.Items.length %></td>
+                  <td><%=orden.NumeroOrden %></td>
+                  <td><%=orden.timestamp %></td>
+                  <td><%=orden.Estado %></td>
+                </tr>
+            </tbody>
+        <% }) %> 
+     </table>
+  </div>
+  <%} else { %>
+    <p>No hay productos en el carrito</p>
+  <% } %>
+     </body>
+    </html>

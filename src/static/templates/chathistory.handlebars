@@ -1,0 +1,26 @@
+{{#each chathistory as |chathistory|}}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">{{this.Username}}</h6>
+    <h5 class="card-title" color="blue">{{this.Message}}</h5>
+    {{#each this.Respuestas}}
+      <h6 class="card-title">{{this.UserResponse}}</h6>
+      <h9 class="card-text">{{this.Respuesta}}</h9>
+    {{/each}}
+      <form action="/chat/{{this._id}}" method="POST">
+        <input type="text" placeholder="respuesta" name="respuesta">
+        <button type="submit" class="btn btn-secondary btn-large">Responder</button>
+      </form>
+
+    {{!-- <form id="myForm" onsubmit="myFunc(); return false">
+      <input id="nombre" type="text" placeholder="nombre"></input>
+      <input id="respuesta" type="text" placeholder="respuesta"></input>
+      <input id="id" type="text" value={{this._id}}></input>
+      <input type="submit"></input>
+    </form> --}}
+  </div>  
+</div>
+{{else}}
+  <p>No hay chat</p>
+{{/each}}
+<script src="../static/index.js">{{!}}</script>

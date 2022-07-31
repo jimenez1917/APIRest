@@ -1,0 +1,15 @@
+<% if (products.length>0) { %>
+    <% products.forEach(product =>{ %>
+        <tbody>
+            <tr>
+              <th scope="row"><%=product.id%></th>
+              <td><%=product.nombre %></td>
+              <td><%=product.descripcion %></td>
+              <td><%=product.precio %></td>
+            </tr>
+        </tbody>
+    <% }) %>  
+    <% } else { %>
+        <p>No hay usuarios por mostrar</p>
+<% } %>
+        

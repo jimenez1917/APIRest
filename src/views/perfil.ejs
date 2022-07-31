@@ -1,0 +1,14 @@
+<%- include('./partials/head') %> 
+<div class="container sm-6">
+        <h2><%=perfil.username%></h2>
+        <h2><%=perfil.nombre%></h2>
+        <h2><%=perfil.direccion%></h2>
+        <h2><%=perfil.edad%></h2>
+        <h2><%=perfil.telefono%></h2>
+        <h2><%=perfil.role%></h2>
+        <form action = "/logout" method = "post">
+            <button type="submit" class="btn btn-dark">LogOut</button>
+        <form>
+    </div>
+    </body>
+    </html>

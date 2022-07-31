@@ -1,0 +1,31 @@
+<%- include('./partials/head') %> 
+<div class="container sm-6">
+    <table class="table">
+        <thead>
+          <p><b>Uso de Memoria</b></p>
+          <p><b>rss:</b> <%=procesos.memoria.rss %></p>
+          <p><b>heapTotal:</b><%=procesos.memoria.heapTotal %></p>
+          <p><b>heapUsed:</b><%=procesos.memoria.heapUsed %></p>
+          <p><b>external:</b><%=procesos.memoria.external %></p>
+          <p><b>arrayBuffers:</b><%=procesos.memoria.arrayBuffers %></p>
+          <tr>
+            <th scope="col">Directorio</th>
+            <th scope="col">Id del proceso</th>
+            <th scope="col">Version</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Sistema</th>
+          </tr>
+        </thead>
+            <tbody>
+                <tr>
+                  <th scope="row"><%=procesos.directorio%></th>
+                  <td><%=procesos.id %></td>
+                  <td><%=procesos.version %></td>
+                  <td><%=procesos.titulo %></td>
+                  <td><%=procesos.sistema %></td>
+                </tr>
+            </tbody>
+     </table>
+    </div>
+    </body>
+    </html>

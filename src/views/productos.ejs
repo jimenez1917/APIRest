@@ -1,0 +1,38 @@
+<%- include('./partials/head') %> 
+<div class="container sm-6">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+          </tr>
+        </thead>
+        <% products.forEach(product =>{ %>
+            <tbody>
+                <tr>
+                  <th scope="row"><%=product.id%></th>
+                  <td><%=product.categoria %></td>
+                  <td><%=product.descripcion %></td>
+                  <td><%=product.precio %></td>
+                  <td><button onclick = "agregar('<%=product.id%>')">Agregar</td>
+                </tr>
+            </tbody>
+        <% }) %> 
+    </table>
+        <form action = "/carrito" method = "get">
+            <button type="submit" class="btn btn-dark">Ir a Mi carrito</button>
+        <form>
+    </div>
+    <script>
+        function agregar(product){
+            fetch(`http://localhost:8080/carrito/${product}`,{
+                method: 'POST',
+                body: JSON.stringify(product),
+            })
+        }
+    </script>
+    </body>
+    </html>

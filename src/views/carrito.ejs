@@ -1,0 +1,63 @@
+<%- include('./partials/head') %> 
+<h1>Tu Carrito</h1>
+<%if (products.length>0){ %>
+<div class="container sm-6">
+    <table class="table">
+        <thead>
+           <tr>
+            <th scope="col">#</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Price</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Quitar</th>
+          </tr>
+        </thead>
+        <% products.forEach(product =>{ %>
+            <tbody>
+                <tr>
+                  <th scope="row"><%=product._id%></th>
+                  <td><%=product.categoria %></td>
+                  <td><%=product.descripcion %></td>
+                  <td><%=product.precio %></td>
+                  <td><input type="number" name='cantidad' id='<%=product._id%>' placeholder='<%=product.cantidad%>'><button onclick="modificar(document.getElementById('<%=product._id%>').value,'<%=product._id%>')">Modificar</button></td>
+                  <td><button onclick="eliminar('<%=product._id%>')">Eliminar</td>
+                </tr>
+            </tbody>
+        <% }) %> 
+     </table>
+        <!-- <form action = "/vaciar" method = "get">
+            <button type="submit" class="btn btn-dark">Vaciar Carrito o volver a productos</button>
+        <form> -->
+        <form action = "/ordenDeCompra" method = "post">
+            <button type="submit" class="btn btn-dark">Generar compra</button>
+        </form>
+        <form action = "/carrito/carrito/vaciar" method = "post">
+            <button type="submit" class="btn btn-secondary">Vaciar Carrito</button>
+        </form>
+  </div>
+  <%} else { %>
+    <p>No hay productos en el carrito</p>
+  <% } %>
+    <script>
+      function modificar(value,id){
+        setTimeout("location.reload(true);",1000);
+          fetch(`http://localhost:8080/carrito/${id}`,{
+                method: 'PUT',
+                headers: {
+                  'Accept': 'application/json, text/plain, */*',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({value})
+            })
+      }
+      function eliminar(id){
+        setTimeout("location.reload(true);",1000);
+        fetch(`http://localhost:8080/carrito/${id}`,{
+                method: 'DELETE',
+                body: JSON.stringify(id)
+            })
+      }
+  </script>
+    </body>
+    </html>
